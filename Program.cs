@@ -76,11 +76,11 @@ namespace Conditionals
             {
                 Console.WriteLine("You are in Imminent Danger");
             }
-            else if (playerHealth = 0)
+            else if (playerHealth <= 0)
             {
                 Console.WriteLine("You are Dead");
             }
-            else if (playerHealth = 100)
+            else if (playerHealth <= 100)
             {
                 Console.WriteLine("You are Alive");
             }

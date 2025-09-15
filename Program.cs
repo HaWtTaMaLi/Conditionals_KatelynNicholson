@@ -10,45 +10,42 @@ namespace Conditionals
     {
         fist,
         pistol,
-        rocketlauncher,
-        sniperRifle
+        asultRifle,
+        sniperRifle,
+        rocketLauncher,
     }
     internal class Program
     {
-        static int weapon = 2;
+        static int playerHealth 100;
         static int enemyHealth = 100;
-        static WeaponType weapon = WeaponType ;        
-        static int berries = 50;
-        static int twigs = 40;
-        static int rocks = 30;
+        static WeaponType weapon = WeaponType.fist;     
 
         static void Main()
         {
-            string 
-
+            
             //switch statment
             switch(weapon)
             {
-                case WeaponType.fist:
-                    //Fist 
-                    DealDamageToEnemy(20);
+                case WeaponType.fist: 
+                    DealDamageToEnemy(20);       //Hurt
                     break;
-                case WeaponType.pistol:
-                    // Pistol 
-                    DealDamageToEnemy(100);
+                case WeaponType.pistol: 
+                    DealDamageToEnemy(50);       //Badly Hurt
                     break;
-                case WeaponType.rocketlauncher:
-                    //Rocket 
-                    DealDamageToEnemy(100);
+                case WeaponType.asultRifle:
+                    DealDamageToEnemy(60);       //Severly Hurt
                     break;
                 case WeaponType.sniperRifle:
-                    //Sniper 
-                    DealDamageToEnemy(50);
+                    DealDamageToEnemy(80);       //Imminent Danger
                     break;
-                defult:
-                    Console.Write("weapon was not valid");
-
+                case WeaponType.rocketLauncher:
+                    DealDamageToEnemy(100);      //Dead
+                    break;
             }
+
+
+            //Lines of Combat
+
         }
 
         static void DealDamageToEnemy(int amount)
@@ -56,6 +53,47 @@ namespace Conditionals
             Console.WriteLine($"Enemy health was {enemyHealth}. They took {amount} damage."); // with $ you need {}
             enemyHealth -= amount;
             Console.WriteLine($"Enemy health is now {enemyHealth}.");
+
+        }
+
+        static void DealDamageToPlayer(int amount)
+        {
+            playerHealth -= amount;
+
+            if (playerHealth < 81)
+            {
+                Console.WriteLine("You are Hurt");
+            }
+            else if (playerHealth < 51)
+            {
+                Console.WriteLine("You are Badly Hurt");
+            }
+            else if (playerHealth < 41)
+            {
+                Console.WriteLine("You are Severly Hurt");
+            }
+            else if (playerHealth < 21)
+            {
+                Console.WriteLine("You are in Imminent Danger");
+            }
+            else if (playerHealth = 0)
+            {
+                Console.WriteLine("You are Dead");
+            }
+            else if (playerHealth = 100)
+            {
+                Console.WriteLine("You are Alive");
+            }
+        }
+
+        static void HUD()
+        {
+            //HUD//
+            Console.WriteLine("|Player  |");
+            Console.WriteLine($"Health:{playerHealth}");
+            
+            //display player name           //display enemy name
+            //display player health         //display enemy health
         }
     }
 }

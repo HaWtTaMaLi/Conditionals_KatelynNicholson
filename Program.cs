@@ -92,29 +92,29 @@ namespace Conditionals
             playerHealth -= amount;
             Console.ReadKey(); 
 
-            if (playerHealth < 80)
+            if (playerHealth >= 100)
+            {
+                Console.WriteLine("You are Alive");
+            }
+            else if (playerHealth >= 80)
             {
                 Console.WriteLine("You are Hurt");
             }
-            else if (playerHealth < 50)
+            else if (playerHealth >= 50)
             {
                 Console.WriteLine("You are Badly Hurt");
             }
-            else if (playerHealth < 40)
+            else if (playerHealth >= 40)
             {
                 Console.WriteLine("You are Severly Hurt");
             }
-            else if (playerHealth < 20)
+            else if (playerHealth >= 20)
             {
                 Console.WriteLine("You are in Imminent Danger");
             }
-            else if (playerHealth <= 0)
+            else if (playerHealth >= 0)
             {
                 Console.WriteLine("You are Dead");
-            }
-            else if (playerHealth <= 100)
-            {
-                Console.WriteLine("You are Alive");
             }
         }
 

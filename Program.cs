@@ -12,47 +12,57 @@ namespace Conditionals
         pistol,
         asultRifle,
         sniperRifle,
-        rocketLauncher,
+        rocketLauncher
     }
     internal class Program
     {
         static int playerHealth = 100;
         static int enemyHealth = 100;
-        static WeaponType weapon = WeaponType.fist;     
+        static WeaponType weapon = WeaponType.fist;
 
-        static void Main()
+        static void Main() 
         {
-            
+
             //Lines of Combat
             Console.WriteLine("An enemy appears!");
             Console.ReadKey();
             Console.WriteLine("You ready your weapon");
             Console.ReadKey();
-            Console.Clear();
 
-            Console.WriteLine($"You strike the enemy with your {weapon}!");
+            Console.WriteLine("You strike the enemy with your Pistol!");
             Console.ReadKey();
             Console.WriteLine("You miss and hit your own foot!");
             DealDamageToPlayer(20);
             Console.ReadKey();
-            Console.ReadKey();
-            Console.Clear();
 
             Console.WriteLine("You ready your weapon and strike the enemy again");
+            Console.ReadKey();
             DealDamageToEnemy(20);
             Console.ReadKey();
+            Console.WriteLine("Enemy pulls out an assult rifle");
+            Console.ReadKey();
+            Console.WriteLine("It Hits!");
+            Console.ReadKey();
+            DealDamageToPlayer(60);
+            Console.ReadKey();
+            HUD();
+            Console.ReadKey();
+            Console.WriteLine("The End.");
             Console.ReadKey();
             Console.Clear();
 
-            //Console.WriteLine("enemy attack u ");
+        }
+
+        private static void WeaponSwitch()
+        {
 
             //switch statment
-            switch(weapon)
+            switch (weapon)
             {
-                case WeaponType.fist: 
+                case WeaponType.fist:
                     DealDamageToEnemy(20);       //Hurt
                     break;
-                case WeaponType.pistol: 
+                case WeaponType.pistol:
                     DealDamageToEnemy(50);       //Badly Hurt
                     break;
                 case WeaponType.asultRifle:
@@ -69,36 +79,32 @@ namespace Conditionals
 
         static void DealDamageToEnemy(int amount)
         {
-            Console.Clear();
+
             Console.WriteLine($"Enemy health was {enemyHealth}. They took {amount} damage.");
             enemyHealth -= amount;
-            HUD();
             Console.ReadKey();
-            Console.Clear();
         }
 
         static void DealDamageToPlayer(int amount)
         {
-            Console.Clear();
+
             Console.WriteLine($"Your health was {playerHealth}. You took {amount} damage.");
             playerHealth -= amount;
-            HUD();
             Console.ReadKey(); 
-            Console.Clear();
 
-            if (playerHealth < 81)
+            if (playerHealth < 80)
             {
                 Console.WriteLine("You are Hurt");
             }
-            else if (playerHealth < 51)
+            else if (playerHealth < 50)
             {
                 Console.WriteLine("You are Badly Hurt");
             }
-            else if (playerHealth < 41)
+            else if (playerHealth < 40)
             {
                 Console.WriteLine("You are Severly Hurt");
             }
-            else if (playerHealth < 21)
+            else if (playerHealth < 20)
             {
                 Console.WriteLine("You are in Imminent Danger");
             }

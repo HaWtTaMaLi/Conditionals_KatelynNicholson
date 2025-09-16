@@ -16,13 +16,36 @@ namespace Conditionals
     }
     internal class Program
     {
-        static int playerHealth 100;
+        static int playerHealth = 100;
         static int enemyHealth = 100;
         static WeaponType weapon = WeaponType.fist;     
 
         static void Main()
         {
             
+            //Lines of Combat
+            Console.WriteLine("An enemy appears!");
+            Console.ReadKey();
+            Console.WriteLine("You ready your weapon");
+            Console.ReadKey();
+            Console.Clear();
+
+            Console.WriteLine($"You strike the enemy with your {weapon}!");
+            Console.ReadKey();
+            Console.WriteLine("You miss and hit your own foot!");
+            DealDamageToPlayer(20);
+            Console.ReadKey();
+            Console.ReadKey();
+            Console.Clear();
+
+            Console.WriteLine("You ready your weapon and strike the enemy again");
+            DealDamageToEnemy(20);
+            Console.ReadKey();
+            Console.ReadKey();
+            Console.Clear();
+
+            //Console.WriteLine("enemy attack u ");
+
             //switch statment
             switch(weapon)
             {
@@ -42,23 +65,26 @@ namespace Conditionals
                     DealDamageToEnemy(100);      //Dead
                     break;
             }
-
-
-            //Lines of Combat
-
         }
 
         static void DealDamageToEnemy(int amount)
         {
-            Console.WriteLine($"Enemy health was {enemyHealth}. They took {amount} damage."); // with $ you need {}
+            Console.Clear();
+            Console.WriteLine($"Enemy health was {enemyHealth}. They took {amount} damage.");
             enemyHealth -= amount;
-            Console.WriteLine($"Enemy health is now {enemyHealth}.");
-
+            HUD();
+            Console.ReadKey();
+            Console.Clear();
         }
 
         static void DealDamageToPlayer(int amount)
         {
+            Console.Clear();
+            Console.WriteLine($"Your health was {playerHealth}. You took {amount} damage.");
             playerHealth -= amount;
+            HUD();
+            Console.ReadKey(); 
+            Console.Clear();
 
             if (playerHealth < 81)
             {
@@ -89,11 +115,9 @@ namespace Conditionals
         static void HUD()
         {
             //HUD//
-            Console.WriteLine("|Player  |");
-            Console.WriteLine($"Health:{playerHealth}");
-            
-            //display player name           //display enemy name
-            //display player health         //display enemy health
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~HUD~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine($"Player Health:{playerHealth,3}   |   Enemy Health:{enemyHealth,3}");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }
     }
 }
